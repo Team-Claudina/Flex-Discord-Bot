@@ -11,6 +11,7 @@ logger.addHandler(handler)
 
 PREFIX = '.'
 SERVER_NAME = 'Flex Server'
+SECRET = 'secret'
 bot = commands.Bot(command_prefix=PREFIX, description='Flex Discord Bot', help_command=None)
 
 bot.add_cog(cogs.greetings_cog.Greeting(bot=bot, server=SERVER_NAME))
@@ -23,4 +24,4 @@ async def on_ready():
     print(f'On ready triggered and status is set. Logged in with {bot.user}')
 
 
-bot.run('secret')
+bot.run(SECRET)
