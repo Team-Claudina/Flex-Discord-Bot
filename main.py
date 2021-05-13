@@ -9,12 +9,14 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
-PREFIX = '.'
+intents = discord.Intents.all()
+
+PREFIX = 'flex '
 SERVER_NAME = 'Flex Server'
 SECRET = 'secret'
 bot = commands.Bot(command_prefix=PREFIX, description='Flex Discord Bot', help_command=None)
 
-bot.add_cog(greetings_cog.Greeting(bot=bot, server=SERVER_NAME))
+bot.add_cog(greetings_cog.Greeting(bot=bot, server=SERVER_NAME, prefix=PREFIX))
 
 
 @bot.event
