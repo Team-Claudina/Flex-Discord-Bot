@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import logging
 from cogs import greetings_cog
-from venv import venv
+from var import venv
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
