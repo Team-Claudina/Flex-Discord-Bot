@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import logging
-import cogs
+from cogs import greetings_cog
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -14,7 +14,7 @@ SERVER_NAME = 'Flex Server'
 SECRET = 'secret'
 bot = commands.Bot(command_prefix=PREFIX, description='Flex Discord Bot', help_command=None)
 
-bot.add_cog(cogs.greetings_cog.Greeting(bot=bot, server=SERVER_NAME))
+bot.add_cog(greetings_cog.Greeting(bot=bot, server=SERVER_NAME))
 
 
 @bot.event
