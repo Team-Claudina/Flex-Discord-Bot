@@ -4,7 +4,6 @@ import logging
 
 from cogs import Greeting, JokeGenerator
 from var import venv
-import cogs
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)

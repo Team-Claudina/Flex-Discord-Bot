@@ -21,11 +21,11 @@ class Greeting(commands.Cog):
 
     # Create Listener For Greeting Command Aliases And Responses
     @commands.command(aliases=['hi', 'hello', 'greetings'])
-    async def greet_(self, ctx, *, member: discord.Member = 'None'):
+    async def greet_(self, ctx, *, member: discord.Member = None):
         # TODO: Print Nicely Formatted Hello Message With Multi Message Prevention
 
         member = member or ctx.author
 
-        await ctx.send('Hello there {member_nick}\nPlease type {PREFIX}help for command list.'
-                       .format(member_nick=member, PREFIX=self.PREFIX))
+        await ctx.send('Hello there {member_nick}\nPlease type "{PREFIX}help" for command list.'
+                       .format(member_nick=member.display_name, PREFIX=self.PREFIX))
         print('Greeted {member_nick}'.format(member_nick=member))

@@ -9,10 +9,10 @@ class JokeGenerator(commands.Cog):
 
     @commands.command()
     async def joke(self, ctx):
-        response = json.loads(requests.get("https://tambalapi.herokuapp.com-").text)
-        await ctx.message.send(content=":rofl: {}".format(response[0]["joke"]))
+        response = json.loads(requests.get("https://tambalapi.herokuapp.com").json())
+        await ctx.message.send(response[0]["joke"])
 
     @commands.command()
     async def chuck(self, ctx):
         response = requests.get("http://api.icndb.com/jokes/random").text
-        await ctx.message.send(content=":rofl: {}".format(json.loads(response)["value"]["joke"]))
+        await ctx.message.send(":rofl: {}".format(json.loads(response)["value"]["joke"]))
