@@ -1,4 +1,5 @@
 # Import Necessary Dependencies
+import discord
 from discord.ext import commands
 
 
@@ -15,12 +16,16 @@ class Greeting(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member):
         # TODO: Embed Welcome Message And Help Command
+
         await member.send('Welcome To {server}'.format(server=self.server))
 
     # Create Listener For Greeting Command Aliases And Responses
     @commands.command(aliases=['hi', 'hello', 'greetings'])
-    async def greet_(self, ctx):
+    async def greet_(self, ctx, *, member: discord.Member = None):
         # TODO: Print Nicely Formatted Hello Message With Multi Message Prevention
-        await ctx.send('Hello there {member_nick}\nPlease type {PREFIX}help for command list.'
-                       .format(member_nick=ctx.message.author.nick, PREFIX=self.PREFIX))
-        print('Greeted {member_nick}'.format(member_nick=ctx.member.nick))
+
+        member = member or ctx.author
+
+        await ctx.send('Hello there {member_nick}\nPlease type "{PREFIX}help" for command list.'
+                       .format(member_nick=member.display_name, PREFIX=self.PREFIX))
+        print('Greeted {member_nick}'.format(member_nick=member))
