@@ -19,8 +19,7 @@ SECRET = venv.secret
 bot = commands.Bot(command_prefix=PREFIX, description='Flex Discord Bot', help_command=None)
 
 bot.add_cog(greetings_cog.Greeting(bot=bot, server=SERVER_NAME, prefix=PREFIX))
-#bot.add_cog(JokeGenerator(bot))
-
+# bot.add_cog(JokeGenerator(bot))
 
 
 @bot.event
@@ -31,5 +30,5 @@ async def on_ready():
 
 
 bot.run(SECRET)
-#def setup(bot):
-    #bot.add_cog(JokeGenerator(bot))
+# def setup(bot):
+#   bot.add_cog(JokeGenerator(bot))
