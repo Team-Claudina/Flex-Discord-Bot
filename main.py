@@ -1,9 +1,8 @@
 import discord
 from discord.ext import commands
 import logging
-from cogs import greetings_cog
+from cogs import greetings_cog, jokes_cog
 from var import venv
-from cogs import jokes_cog
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -16,10 +15,10 @@ intents = discord.Intents.all()
 PREFIX = 'flex '
 SERVER_NAME = 'Flex Server'
 SECRET = venv.secret
-bot = commands.Bot(command_prefix=PREFIX, description='Flex Discord Bot', help_command=None)
+bot = commands.Bot(command_prefix=2PREFIX, description='Flex Discord Bot', help_command=None)
 
 bot.add_cog(greetings_cog.Greeting(bot=bot, server=SERVER_NAME, prefix=PREFIX))
-# bot.add_cog(JokeGenerator(bot))
+bot.add_cog(jokes_cog.JokeGenerator(bot=bot))
 
 
 @bot.event
@@ -30,5 +29,3 @@ async def on_ready():
 
 
 bot.run(SECRET)
-# def setup(bot):
-#   bot.add_cog(JokeGenerator(bot))
