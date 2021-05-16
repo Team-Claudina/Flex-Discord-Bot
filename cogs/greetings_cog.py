@@ -1,5 +1,6 @@
 # Import Necessary Dependencies
 from discord.ext import commands
+import random
 
 
 # Create Class For Greetings
@@ -24,3 +25,18 @@ class Greeting(commands.Cog):
         await ctx.send('Hello there {member_nick}\nPlease type {PREFIX}help for command list.'
                        .format(member_nick=ctx.message.author.nick, PREFIX=self.PREFIX))
         print('Greeted {member_nick}'.format(member_nick=ctx.member.nick))
+
+    @commands.command(alaises=['welp'])
+    async def welp(self, ctx):
+        await ctx.send('If you are seeing this dear {member_nick} I might have done smth'
+                        .format(member_nick=ctx.message.author.nick, PREFIX=self.PREFIX))
+
+   # @commands.command(alaises=['joke'])
+    #async def joke(self, ctx):
+        #with open("jokes.txt", "r") as file:
+          #  allText = file.read()
+           # words = list(map(str, allText.split()))
+           #joke = print(random.choise(words))
+    #    await ctx.send('There you go mate:\n', joke
+
+                 #      .format(member_nick=ctx.message.author.nick, PREFIX=self.PREFIX))
