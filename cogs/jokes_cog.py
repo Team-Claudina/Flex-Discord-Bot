@@ -16,5 +16,5 @@ class JokeGenerator(commands.Cog):
 
     @commands.command()
     async def chuck(self, ctx):
-        response = requests.get("http://api.icndb.com/jokes/random").text
-        await ctx.message.send(":rofl: {}".format(json.loads(response)["value"]["joke"]))
+        response = json.loads(requests.get("http://api.icndb.com/jokes/random").text)
+        await ctx.send(response["value"]["joke"])
