@@ -1,9 +1,14 @@
+import os
+
 import discord
 from discord.ext import commands
 import logging
 
 from cogs import Greeting, JokeGenerator, RandomSongPicker
-from var import venv
+
+from setup import main as setup_handler
+
+setup_handler()
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -13,8 +18,8 @@ logger.addHandler(handler)
 
 intents = discord.Intents.all()
 
-PREFIX = 'flex '
-SERVER_NAME = 'Flex Server'
+PREFIX = os.getenv('PREFIX')
+SERVER_NAME = os.getenv('SERVER')
 SECRET = venv.secret
 bot = commands.Bot(command_prefix=PREFIX, description='Flex Discord Bot', help_command=None)
 
