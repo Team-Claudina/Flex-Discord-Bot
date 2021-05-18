@@ -20,7 +20,7 @@ intents = discord.Intents.all()
 
 PREFIX = os.getenv('PREFIX')
 SERVER_NAME = os.getenv('SERVER')
-SECRET = venv.secret
+SECRET = os.getenv('SECRET')
 bot = commands.Bot(command_prefix=PREFIX, description='Flex Discord Bot', help_command=None)
 
 bot.add_cog(Greeting(bot=bot, server=SERVER_NAME, prefix=PREFIX))
@@ -30,7 +30,7 @@ bot.add_cog(RandomSongPicker(bot=bot))
 
 @bot.event
 async def on_ready():
-    game = discord.Activity(type=discord.ActivityType.playing, name="The Pouli tou")
+    game = discord.Activity(type=discord.ActivityType.playing, name=os.getenv('SERVER'))
     await bot.change_presence(activity=game, status=discord.Status.online)
     print(f'On ready triggered and status is set. Logged in with {bot.user}')
 
