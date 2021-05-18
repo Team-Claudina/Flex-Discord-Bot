@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import logging
 
-from cogs import Greeting, JokeGenerator
+from cogs import Greeting, JokeGenerator, RandomSongPicker
 from var import venv
 
 logger = logging.getLogger('discord')
@@ -20,6 +20,7 @@ bot = commands.Bot(command_prefix=PREFIX, description='Flex Discord Bot', help_c
 
 bot.add_cog(Greeting(bot=bot, server=SERVER_NAME, prefix=PREFIX))
 bot.add_cog(JokeGenerator(bot=bot))
+bot.add_cog(RandomSongPicker(bot=bot))
 
 
 @bot.event
