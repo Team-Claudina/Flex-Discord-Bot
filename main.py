@@ -24,7 +24,7 @@ bot.add_cog(JokeGenerator(bot=bot))
 
 @bot.event
 async def on_ready():
-    game = discord.Activity(type=discord.ActivityType.watching, name="Flex Bot")
+    game = discord.Activity(type=discord.ActivityType.playing, name="The Pouli tou")
     await bot.change_presence(activity=game, status=discord.Status.online)
     print(f'On ready triggered and status is set. Logged in with {bot.user}')
 
