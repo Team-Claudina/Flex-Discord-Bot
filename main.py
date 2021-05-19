@@ -8,7 +8,7 @@ from cogs import Greeting, JokeGenerator, RandomSongPicker
 
 from setup import main as setup_handler
 
-setup_handler()
+setup_variables = setup_handler()
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -23,7 +23,9 @@ SERVER_NAME = os.getenv('SERVER')
 SECRET = os.getenv('SECRET')
 bot = commands.Bot(command_prefix=PREFIX, description='Flex Discord Bot', help_command=None)
 
-bot.add_cog(Greeting(bot=bot))
+embed_manager = setup_variables[0]
+
+bot.add_cog(Greeting(bot=bot, embed_manager=embed_manager))
 bot.add_cog(JokeGenerator(bot=bot))
 bot.add_cog(RandomSongPicker(bot=bot))
 
