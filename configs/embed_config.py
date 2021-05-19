@@ -4,7 +4,8 @@ rules = [
     # Eg ['rule-1', 'Don't Do This', False]
     ['Rule 1', 'Have Fun', False],
     ['Rule 2', 'Be Nice', False],
-    ['Rule 3', 'Play', False]
+    ['Rule 3', 'Play', False],
+    ['Rule 4', 'idk', False]
 ]
 
 # Servers are created and sorted in the order that they are inserted in the code

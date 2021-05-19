@@ -1,5 +1,5 @@
 import os
-from embeds.embed_manager import EmbedManager
+from embeds import EmbedManager
 
 
 def env_setup():
