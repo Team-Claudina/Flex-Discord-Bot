@@ -9,10 +9,8 @@ def env_setup():
             for line in env_lines:
                 try:
                     env_comp = line.split(' = ')
-                    if env_comp[0] != 'SECRET':
-                        env_comp[1] = env_comp[1][1:-2]
-                    else:
-                        env_comp[1] = env_comp[1][1:-1]
+                    # if env_comp[0] != 'SECRET':
+                    env_comp[1] = env_comp[1][1:-2]
 
                     os.environ[env_comp[0]] = env_comp[1]
                 finally:
