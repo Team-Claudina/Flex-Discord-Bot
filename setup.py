@@ -1,4 +1,5 @@
 import os
+# from embeds import EmbedManager
 
 
 def env_setup():
@@ -20,6 +21,10 @@ def env_setup():
             print('Successfully wrote ENV')
     finally:
         print('ENV Setup Completed')
+
+
+# def embed_setup():
+#     embed_manager = EmbedManager()
 
 
 def main():
