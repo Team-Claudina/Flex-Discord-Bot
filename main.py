@@ -23,7 +23,7 @@ SERVER_NAME = os.getenv('SERVER')
 SECRET = os.getenv('SECRET')
 bot = commands.Bot(command_prefix=PREFIX, description='Flex Discord Bot', help_command=None)
 
-bot.add_cog(Greeting(bot=bot, server=SERVER_NAME, prefix=PREFIX))
+bot.add_cog(Greeting(bot=bot))
 bot.add_cog(JokeGenerator(bot=bot))
 bot.add_cog(RandomSongPicker(bot=bot))
 

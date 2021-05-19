@@ -1,4 +1,6 @@
 # Import Necessary Dependencies
+import os
+
 import discord
 from discord.ext import commands
 
@@ -6,11 +8,11 @@ from discord.ext import commands
 # Create Class For Greetings
 class Greeting(commands.Cog):
     # Give Definition To Self And Bring In Bot
-    def __init__(self, bot, prefix, server="Flex Server"):
+    def __init__(self, bot):
         super().__init__()
         self.bot = bot
-        self.PREFIX = prefix
-        self.server = server
+        self.PREFIX = os.getenv('PREFIX')
+        self.server = os.getenv('SERVER')
 
     # Create Listener For Message On User Join
     @commands.Cog.listener()
