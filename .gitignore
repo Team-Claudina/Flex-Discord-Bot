@@ -130,6 +130,6 @@ dmypy.json
 
 # Personal
 discord.log
-general_config.py
-embed_config.py
+cogs/general_config.py
+cogs/embed_config.py
 .idea
