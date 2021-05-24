@@ -1,33 +1,27 @@
-import os
-
 import discord
 
-from configs import embed_config, general_config
+from configs import AUTHOR, URL, IMG_URL, EMBED_COLOUR, STATIC_BUILDS
 
-author = os.getenv('AUTHOR')
-url = general_config.url
-img_url = general_config.img_url
-
-print('\nEmbed URL\'s\nURL: ' + url + '\nImg URL: ' + img_url + '\n')
+print('\nEmbed URL\'s\nURL: ' + URL + '\nImg URL: ' + IMG_URL + '\n')
 
 
 # Create Base Embed With discord.Embed
 def create_embed_(title=None, description=None):
     embed = discord.Embed(
         title=title,
-        author=author,
+        author=AUTHOR,
         description=description,
-        url=url,
-        colour=general_config.embed_colour
+        url=URL,
+        colour=EMBED_COLOUR
     )
 
     embed.set_thumbnail(
-        url=img_url
+        url=IMG_URL
     )
 
     embed.set_footer(
         text='FlexBot Limited',
-        icon_url=img_url
+        icon_url=IMG_URL
     )
 
     # return template embed
@@ -43,12 +37,12 @@ class EmbedManager:
     def build_all_static(self):
         # Built loop that uses values from config static builds as inputs
 
-        for key in embed_config.static_builds:
-            self.embed_dict[key] = create_embed_(title=key, description=embed_config.static_builds[key][0])
+        for key in STATIC_BUILDS:
+            self.embed_dict[key] = create_embed_(title=key, description=STATIC_BUILDS[key][0])
             self.create_statics(key=key)
 
     def create_statics(self, key):
-        for field in embed_config.static_builds[key][1]:
+        for field in STATIC_BUILDS[key][1]:
             self.embed_dict[key].add_field(
                 name=field[0],
                 value=field[1],

@@ -1,8 +1,8 @@
 # Import Necessary Dependencies
-import os
-
 import discord
 from discord.ext import commands
+
+from configs import PREFIX, SERVER
 
 
 # Create Class For Greetings
@@ -11,8 +11,8 @@ class Greeting(commands.Cog):
     def __init__(self, bot, embed_manager):
         super().__init__()
         self.bot = bot
-        self.PREFIX = os.getenv('PREFIX')
-        self.server = os.getenv('SERVER')
+        self.PREFIX = PREFIX
+        self.server = SERVER
         self.embed_manager = embed_manager
 
     # Create Listener For Message On User Join

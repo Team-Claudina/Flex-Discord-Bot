@@ -1,11 +1,10 @@
-import os
+import logging
 
 import discord
 from discord.ext import commands
-import logging
 
 from cogs import Greeting, JokeGenerator, RandomSongPicker
-
+from configs import PREFIX, SERVER, SECRET
 from setup import main as setup_handler
 
 setup_variables = setup_handler()
@@ -18,9 +17,6 @@ logger.addHandler(handler)
 
 intents = discord.Intents.all()
 
-PREFIX = os.getenv('PREFIX')
-SERVER_NAME = os.getenv('SERVER')
-SECRET = os.getenv('SECRET')
 bot = commands.Bot(command_prefix=PREFIX, description='Flex Discord Bot', help_command=None)
 
 embed_manager = setup_variables[0]
@@ -32,7 +28,7 @@ bot.add_cog(RandomSongPicker(bot=bot))
 
 @bot.event
 async def on_ready():
-    game = discord.Activity(type=discord.ActivityType.playing, name=os.getenv('SERVER'))
+    game = discord.Activity(type=discord.ActivityType.watching, name=SERVER)
     await bot.change_presence(activity=game, status=discord.Status.online)
     print(f'On ready triggered and status is set. Logged in with {bot.user}')
 
