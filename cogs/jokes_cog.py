@@ -1,6 +1,7 @@
 import json
-import requests
 import random
+
+import requests
 from discord.ext import commands
 
 
@@ -16,5 +17,9 @@ class JokeGenerator(commands.Cog):
 
     @commands.command()
     async def chuck(self, ctx):
-        response = requests.get("http://api.icndb.com/jokes/random").text
-        await ctx.message.send(":rofl: {}".format(json.loads(response)["value"]["joke"]))
+        response = json.loads(requests.get("http://api.icndb.com/jokes/random").text)
+        await ctx.send(response["value"]["joke"])
+
+    @commands.command()
+    async def gay(self, ctx):
+        await ctx.send('No U')

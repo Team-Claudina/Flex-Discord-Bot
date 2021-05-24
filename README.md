@@ -4,6 +4,6 @@ The Idea Of Flex Is To Be Very Modular And Straight Forward To Modify For Your O
 
 ## How To Get It To Work
 
-Add a var directory in the root of the project and in that directory create a venv.py file. Create a variable in the
-form of 'secret = "{your personal secret}"' and save the file. Comment or uncomment the cogs that you wish to include
-in your main.py and run with python3.
+make sure the packages listed in requirements.txt are installed
+
+Copy the .env.example to a file called .env and replace the necessary items inside, then run python3 main.py

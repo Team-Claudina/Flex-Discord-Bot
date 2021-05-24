@@ -123,7 +123,13 @@ venv.bak/
 # mypy
 .mypy_cache/
 .dmypy.json
-dmypy.json
+dmypy.jsonsa
 
 # Pyre type checker
 .pyre/
+
+# Personal
+discord.log
+configs/general_config.py
+configs/embed_config.py
+.idea

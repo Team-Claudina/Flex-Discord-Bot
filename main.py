@@ -1,9 +1,13 @@
-import discord
-from discord.ext import commands
 import logging
 
-from cogs import Greeting, JokeGenerator
-from var import venv
+import discord
+from discord.ext import commands
+
+from cogs import Greeting, JokeGenerator, RandomSongPicker
+from configs import PREFIX, SERVER, SECRET
+from setup import main as setup_handler
+
+setup_variables = setup_handler()
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -13,18 +17,18 @@ logger.addHandler(handler)
 
 intents = discord.Intents.all()
 
-PREFIX = 'flex '
-SERVER_NAME = 'Flex Server'
-SECRET = venv.secret
 bot = commands.Bot(command_prefix=PREFIX, description='Flex Discord Bot', help_command=None)
 
-bot.add_cog(Greeting(bot=bot, server=SERVER_NAME, prefix=PREFIX))
+embed_manager = setup_variables[0]
+
+bot.add_cog(Greeting(bot=bot, embed_manager=embed_manager))
 bot.add_cog(JokeGenerator(bot=bot))
+bot.add_cog(RandomSongPicker(bot=bot))
 
 
 @bot.event
 async def on_ready():
-    game = discord.Activity(type=discord.ActivityType.watching, name="Flex Bot")
+    game = discord.Activity(type=discord.ActivityType.watching, name=SERVER)
     await bot.change_presence(activity=game, status=discord.Status.online)
     print(f'On ready triggered and status is set. Logged in with {bot.user}')
 
