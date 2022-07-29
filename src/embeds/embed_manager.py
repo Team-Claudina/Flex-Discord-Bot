@@ -1,6 +1,6 @@
 import discord
 
-from configs import AUTHOR, URL, IMG_URL, EMBED_COLOUR, STATIC_BUILDS
+from src.configs import AUTHOR, URL, IMG_URL, EMBED_COLOUR, STATIC_BUILDS
 
 print('\nEmbed URL\'s\nURL: ' + URL + '\nImg URL: ' + IMG_URL + '\n')
 
