@@ -1,5 +1,3 @@
-# TODO: Create system to verify validity of configs
-
 import configs
 import requests
 import validators
@@ -31,25 +29,25 @@ class VerifyConfigs:
 		:return (None)
 		"""
 		if "BOT_NAME" not in self.exclude:
-			self.verify_name()
+			self.verify_name(case=configs.BOT_NAME)
 		if "URL" not in self.exclude:
-			self.verify_url()
+			self.verify_url(case=configs.URL)
 		if "IMG_URL" not in self.exclude:
-			self.verify_image()
+			self.verify_image(case=configs.IMG_URL)
 		if "PREFIX" not in self.exclude:
-			self.verify_prefix()
+			self.verify_prefix(case=configs.PREFIX)
 		if "SERVER" not in self.exclude:
-			self.verify_server()
+			self.verify_server(case=configs.SERVER)
 		if "SECRET" not in self.exclude:
-			self.verify_secret()
+			self.verify_secret(case=configs.SECRET)
 
-	def verify_name(self) -> bool:
+	def verify_name(self, case: str) -> bool:
 		"""
 		Verifies the name in configs.BOT_NAME
 
 		:return (bool) Whether the name was successfully validated or not
 		"""
-		if not self.check_alpha(configs.BOT_NAME):
+		if not self.check_alpha(case):
 			self.logger.critical("Failed to validate BOT_NAME") 
 			self.validated = False
 			return False
@@ -57,17 +55,17 @@ class VerifyConfigs:
 		self.logger.log("Successfully validated BOT_NAME")
 		return True
 
-	def verify_url(self) -> bool:
+	def verify_url(self, case: str) -> bool:
 		"""
 		Verifies the URL in configs.URL
 
 		:return (bool) Whether the url was successfully validated or not
 		"""
-		if not validators.url(configs.URL):
+		if not validators.url(case):
 			self.logger.critical("Failed to validate URL: URL entered is not a valid URL")
 			return False
 
-		page_request = requests.get(configs.URL, allow_redirects=True)
+		page_request = requests.get(case, allow_redirects=True)
 		if page_request.status_code != 200:
 			self.logger.critical("Failed to validate URL: Could not find page URL")
 			return False
@@ -75,34 +73,29 @@ class VerifyConfigs:
 		self.logger.log("Successfully validated URL")
 		return True
 
-	def verify_image(self) -> bool:
+	def verify_image(self, case: str) -> bool:
 		"""
 		Verifies the image URL in configs.URL_IMG
 
 		:return (bool) Whether the image url was successfully validated or not
 		"""
-		def set_image_to_default():
-			configs.IMG_URL = 'https://i.imgur.com/3qfzFxX.png'
-
-		configs.IMG_URL.removesuffix('/')
-		file_type = configs.IMG_URL.split('.')[-1]
+		case.removesuffix('/')
+		file_type = case.split('.')[-1]
 
 		if file_type not in configs.SUPPORTED_IMG_TYPES:
 			self.logger.critical("Image File type not supported, reverting to default")
-			set_image_to_default()
 			return False
 
-		file_request = requests.get(configs.IMG_URL, allow_redirects=True)
+		file_request = requests.get(case, allow_redirects=True)
 		if file_request.status_code != 200:
 			self.logger.critical("Could not find image on the web, reverting to default")
-			set_image_to_default()
 			return False
 
 		self.logger.log("Successfully validated IMG_URL")
 		return True
 
-	def verify_prefix(self) -> bool:
-		if configs.PREFIX == "":
+	def verify_prefix(self, case: str) -> bool:
+		if case == "":
 			self.logger.error("PREFIX Error please check")
 			self.validated = False
 			return False
@@ -110,14 +103,14 @@ class VerifyConfigs:
 		self.logger.debug("Successfully validated PREFIX")
 		return True
 	
-	def verify_server(self) -> bool:
+	def verify_server(self, case: str) -> bool:
 		"""
 		Verifies the server name in configs.SERVER
 
 		:return (bool) Whether the server name was successfully validated or not
 		"""
 
-		if not self.check_alpha(configs.SERVER):
+		if not self.check_alpha(case):
 			self.logger.critical("Failed to validate SERVER") 
 			self.validated = False
 			return False
@@ -125,13 +118,13 @@ class VerifyConfigs:
 		self.logger.log("Successfully validated SERVER")
 		return True
 
-	def verify_secret(self) -> bool:
+	def verify_secret(self, case: str) -> bool:
 		"""
 		Verifies the server secret in configs.SECRET
 
 		:return (bool) Whether the secret was successfully validated or not
 		"""
-		if len(configs.SECRET) != 70:
+		if len(case) != 70:
 			self.logger.critical("SECRET error: Secret is not 70 characters long")
 			return False
 		
