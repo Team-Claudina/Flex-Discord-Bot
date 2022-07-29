@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
 
+from configs import PREFIX, SERVER, SECRET
 from src.cogs import Greeting, JokeGenerator, RandomSongPicker
-from src.configs import PREFIX, SERVER, SECRET
 from src.log import fetch_logger
 from setup import embed_setup, setup_logger
 
