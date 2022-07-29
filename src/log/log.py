@@ -48,14 +48,15 @@ def get_console_handler(formatter: Formatter) -> StreamHandler:
 
 
 # logger setup function
-def setup_logger(logfile: str = Optional[str], log_level: str = Optional[str], logger_name: str = 'logger') -> bool:
+def setup_logger(logfile: str = Optional[str], log_level: str = Optional[str], logger_name: str = 'discord') -> bool:
 	"""
-	Creates a default logger for the package.
+	Creates a default logger for the package named 'logger_name' | 'discord'.
 
 	:param (str) log_level: logging level to use
 		Use DEBUG for development, INFO or None for production.
 	:param (str) logfile: logfile to use, relative to package root
 		Use None for console output.
+	:param (str) logger_name: name of logger to create
 
 	:return (bool) True if logger was created successfully, False if not
 	"""
@@ -85,9 +86,9 @@ def setup_logger(logfile: str = Optional[str], log_level: str = Optional[str], l
 		print(e)
 		return False
 
-def fetch_logger(logger_name: str = 'logger') -> Logger:
+def fetch_logger(logger_name: str = 'discord') -> Logger:
 	"""
-	Fetch and return logger of name 'logger_name'
+	Fetch and return logger of name 'logger_name' | 'discord'
 
 	:param (str) logger_name: The name of the logger you wish to fetch
 
