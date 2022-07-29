@@ -1,5 +1,10 @@
 <h1 align="center">
+	<br>
+		<a href="https://github.com/GreyStinger/Flex-Discord-Bot"><img src="https://raw.githubusercontent.com/GreyStinger/Flex-Discord-Bot/master/static/images/header.png" alt="Flex Bot"\></a>
+	<br>
+	<br>
 	Flex Discord Bot
+	<br>
 </h1>
 
 <h5 align="center">
