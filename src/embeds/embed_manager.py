@@ -1,12 +1,19 @@
 import discord
 
-from src.configs import AUTHOR, URL, IMG_URL, EMBED_COLOUR, STATIC_BUILDS
+from configs.embed_config import AUTHOR, URL, IMG_URL, EMBED_COLOUR, STATIC_BUILDS
 
 print('\nEmbed URL\'s\nURL: ' + URL + '\nImg URL: ' + IMG_URL + '\n')
 
 
-# Create Base Embed With discord.Embed
-def create_embed_(title=None, description=None):
+def create_embed_(title: str = None, description: str = None) -> discord.Embed:
+    """
+    Creates a default discord embed to be added to
+
+    :param (str) title: The title to be placed at the top of the standardized embed
+    :param (str) description: The standardized embed description
+
+    :return (discord.Embed) The created template embed
+    """
     embed = discord.Embed(
         title=title,
         author=AUTHOR,
@@ -24,7 +31,6 @@ def create_embed_(title=None, description=None):
         icon_url=IMG_URL
     )
 
-    # return template embed
     return embed
 
 

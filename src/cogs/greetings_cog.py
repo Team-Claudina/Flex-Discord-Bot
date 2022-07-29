@@ -2,7 +2,7 @@
 import discord
 from discord.ext import commands
 
-from src.configs import PREFIX, SERVER
+from configs import PREFIX, SERVER
 
 
 # Create Class For Greetings

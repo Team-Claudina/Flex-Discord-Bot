@@ -1,5 +1,4 @@
-__title__ = 'Flex Cogs'
+__title__ = 'Flex Config'
 __author__ = 'Flex Team'
 
-from .embed_config import *
 from .general_config import *
