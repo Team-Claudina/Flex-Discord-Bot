@@ -130,6 +130,6 @@ dmypy.jsonsa
 
 # Personal
 discord.log
-configs/general_config.py
-configs/embed_config.py
+src/configs/general_config.py
+src/configs/embed_config.py
 .idea
