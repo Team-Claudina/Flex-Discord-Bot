@@ -27,5 +27,4 @@ async def on_ready():
     logger.log(f'On ready triggered and status is set. Logged in with {bot.user}')
 
 
-
 bot.run(SECRET)
