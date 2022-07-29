@@ -1,6 +1,6 @@
 import discord
 
-from configs.embed_config import AUTHOR, URL, IMG_URL, EMBED_COLOUR, STATIC_BUILDS
+from configs.embed_config import URL, IMG_URL, EMBED_COLOUR, STATIC_BUILDS
 
 print('\nEmbed URL\'s\nURL: ' + URL + '\nImg URL: ' + IMG_URL + '\n')
 
@@ -16,7 +16,7 @@ def create_embed_(title: str = None, description: str = None) -> discord.Embed:
     """
     embed = discord.Embed(
         title=title,
-        author=AUTHOR,
+        author="Flex Team",
         description=description,
         url=URL,
         colour=EMBED_COLOUR
