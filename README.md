@@ -1,5 +1,5 @@
 <h1 align="center">
-	Flex Bot
+	Flex Discord Bot
 </h1>
 
 <h5 align="center">
@@ -16,6 +16,14 @@
 	<a href="https://github.com/psf/black">
 		<img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style: Black">
 	</a>
+</p>
+
+<p align="center">
+  <a href="#overview">Overview</a>
+  •
+  <a href="#philosophy">Philosophy</a>
+  •
+  <a href="#getting-started">Getting Started</a>
 </p>
 
 # Overview
